@@ -27,3 +27,4 @@ vignettes/*.pdf
 # Packrat files
 tests/testthat/packrat/
 packrat-scenario*/
+packrat/lib*/
