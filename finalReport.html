@@ -282,18 +282,17 @@ library(CODreports) # custom report functions</code></pre>
 dat1 &lt;- dat %&gt;% filter(Experiment==1)
 head(dat1)</code></pre>
 <pre><code>## # A tibble: 6 x 10
-##   Subject `Age (mos)` `Sex (1=F, 2=M)` Experiment
-##     &lt;int&gt;       &lt;dbl&gt;            &lt;int&gt;      &lt;int&gt;
-## 1       1        7.01                2          1
-## 2       2        7.07                1          1
-## 3       3        7.07                1          1
-## 4       4        7.10                1          1
-## 5       5        7.27                2          1
-## 6       6        7.30                1          1
-## # ... with 6 more variables: `FamLookingProp (proportion)` &lt;dbl&gt;, `Fam1-4
-## #   (s)` &lt;dbl&gt;, `Fam5-8 (s)` &lt;dbl&gt;, `TestLookingProp (proportion)` &lt;dbl&gt;,
-## #   `PreferenceScore_20s (proportion)` &lt;dbl&gt;, `PreferenceScore_10s
-## #   (proportion)` &lt;dbl&gt;</code></pre>
+##   Subject `Age (mos)` `Sex (1=F, 2=M)` Experiment `FamLookingProp (propor…
+##     &lt;int&gt;       &lt;dbl&gt;            &lt;int&gt;      &lt;int&gt;                    &lt;dbl&gt;
+## 1       1        7.01                2          1                    0.440
+## 2       2        7.07                1          1                    0.580
+## 3       3        7.07                1          1                    0.650
+## 4       4        7.10                1          1                    0.760
+## 5       5        7.27                2          1                    0.770
+## 6       6        7.30                1          1                    0.610
+## # ... with 5 more variables: `Fam1-4 (s)` &lt;dbl&gt;, `Fam5-8 (s)` &lt;dbl&gt;,
+## #   `TestLookingProp (proportion)` &lt;dbl&gt;, `PreferenceScore_20s
+## #   (proportion)` &lt;dbl&gt;, `PreferenceScore_10s (proportion)` &lt;dbl&gt;</code></pre>
 </div>
 <div id="step-4-run-analysis" class="section level2">
 <h2>Step 4: Run analysis</h2>
@@ -442,7 +441,7 @@ reportObject &lt;- compareValues2(reportedValue = &quot;13&quot;, obtainedValue 
 # cohensD=(novelPref$mean  - chanceVal)/novelPref$sd;
 # reportObject &lt;- compareValues2(reportedValue = &quot;0.78&quot;, obtainedValue = cohensD, valueType = 'es')</code></pre>
 <p>The authors sent us the data file containing the raw (i.e., unrounded) data. We will use this now:</p>
-<pre class="r"><code>d.unrounded &lt;- read_csv(&quot;authorAssistance/ExposureCognition_unrounded.csv&quot;)
+<pre class="r"><code>d.unrounded &lt;- read_csv(&quot;authorAssistance/ExposureCognition_Unrounded.csv&quot;)
 d.unrounded &lt;- d.unrounded %&gt;% filter(Experiment == 1) # select experiment 1 only
 
 # summarize mean and sd of preference scores
@@ -721,78 +720,80 @@ write_csv(reportObject, filename)</code></pre>
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/Los_Angeles         
-##  date     2018-02-07                  
+##  date     2018-03-12                  
 ## 
-##  package    * version  date      
-##  assertthat   0.2.0    2017-04-11
-##  backports    1.1.2    2017-12-13
-##  base       * 3.4.3    2017-12-07
-##  bindr        0.1      2016-11-13
-##  bindrcpp   * 0.2      2017-06-17
-##  broom        0.4.2    2017-02-13
-##  cellranger   1.1.0    2016-07-27
-##  cli          1.0.0    2017-11-05
-##  CODreports * 0.1      2017-12-18
-##  colorspace   1.3-2    2016-12-14
-##  compiler     3.4.3    2017-12-07
-##  crayon       1.3.4    2017-09-16
-##  datasets   * 3.4.3    2017-12-07
-##  devtools     1.13.4   2017-11-09
-##  digest       0.6.13   2017-12-14
-##  dplyr      * 0.7.4    2017-09-28
-##  evaluate     0.10.1   2017-06-24
-##  forcats    * 0.2.0    2017-01-23
-##  foreign      0.8-69   2017-06-22
-##  ggplot2    * 2.2.1    2016-12-30
-##  glue         1.2.0    2017-10-29
-##  graphics   * 3.4.3    2017-12-07
-##  grDevices  * 3.4.3    2017-12-07
-##  grid         3.4.3    2017-12-07
-##  gtable       0.2.0    2016-02-26
-##  haven      * 1.1.0    2017-07-09
-##  highr        0.6      2016-05-09
-##  hms          0.4.0    2017-11-23
-##  htmltools    0.3.6    2017-04-28
-##  httr         1.3.1    2017-08-20
-##  jsonlite     1.5      2017-06-01
-##  knitr      * 1.17     2017-08-10
-##  lattice      0.20-35  2017-03-25
-##  lazyeval     0.2.1    2017-10-29
-##  lubridate    1.7.1    2017-11-03
-##  magrittr     1.5      2014-11-22
-##  memoise      1.1.0    2017-04-21
-##  methods    * 3.4.3    2017-12-07
-##  mnormt       1.5-5    2016-10-15
-##  modelr       0.1.1    2017-07-24
-##  munsell      0.4.3    2016-02-13
-##  nlme         3.1-131  2017-02-06
-##  parallel     3.4.3    2017-12-07
-##  pkgconfig    2.0.1    2017-03-21
-##  plyr         1.8.4    2016-06-08
-##  psych        1.7.3.21 2017-03-22
-##  purrr      * 0.2.4    2017-10-18
-##  R6           2.2.2    2017-06-17
-##  Rcpp         0.12.14  2017-11-23
-##  readr      * 1.1.1    2017-05-16
-##  readxl     * 1.0.0    2017-04-18
-##  reshape2     1.4.3    2017-12-11
-##  rlang        0.1.4    2017-11-05
-##  rmarkdown    1.8      2017-11-17
-##  rprojroot    1.2      2017-01-16
-##  rstudioapi   0.7      2017-09-07
-##  rvest        0.3.2    2016-06-17
-##  scales       0.5.0    2017-08-24
-##  stats      * 3.4.3    2017-12-07
-##  stringi      1.1.6    2017-11-17
-##  stringr    * 1.2.0    2017-02-18
-##  tibble     * 1.3.4    2017-08-22
-##  tidyr      * 0.7.2    2017-10-16
-##  tidyverse  * 1.2.1    2017-11-14
-##  tools        3.4.3    2017-12-07
-##  utils      * 3.4.3    2017-12-07
-##  withr        2.1.0    2017-11-01
-##  xml2         1.1.1    2017-01-24
-##  yaml         2.1.16   2017-12-12
+##  package    * version    date      
+##  assertthat   0.2.0      2017-04-11
+##  backports    1.1.2      2017-12-13
+##  base       * 3.4.3      2017-12-07
+##  bindr        0.1        2016-11-13
+##  bindrcpp   * 0.2        2017-06-17
+##  broom        0.4.2      2017-02-13
+##  cellranger   1.1.0      2016-07-27
+##  cli          1.0.0      2017-11-05
+##  CODreports * 0.1        2017-12-18
+##  colorspace   1.3-2      2016-12-14
+##  compiler     3.4.3      2017-12-07
+##  crayon       1.3.4      2017-09-16
+##  datasets   * 3.4.3      2017-12-07
+##  devtools     1.13.5     2018-02-18
+##  digest       0.6.15     2018-01-28
+##  dplyr      * 0.7.4      2017-09-28
+##  evaluate     0.10.1     2017-06-24
+##  forcats    * 0.2.0      2017-01-23
+##  foreign      0.8-69     2017-06-22
+##  ggplot2    * 2.2.1      2016-12-30
+##  glue         1.2.0      2017-10-29
+##  graphics   * 3.4.3      2017-12-07
+##  grDevices  * 3.4.3      2017-12-07
+##  grid         3.4.3      2017-12-07
+##  gtable       0.2.0      2016-02-26
+##  haven      * 1.1.0      2017-07-09
+##  highr        0.6        2016-05-09
+##  hms          0.4.0      2017-11-23
+##  htmltools    0.3.6      2017-04-28
+##  httr         1.3.1      2017-08-20
+##  jsonlite     1.5        2017-06-01
+##  knitr      * 1.20       2018-02-20
+##  lattice      0.20-35    2017-03-25
+##  lazyeval     0.2.1      2017-10-29
+##  lubridate    1.7.1      2017-11-03
+##  magrittr     1.5        2014-11-22
+##  memoise      1.1.0      2017-04-21
+##  methods    * 3.4.3      2017-12-07
+##  mnormt       1.5-5      2016-10-15
+##  modelr       0.1.1      2017-07-24
+##  munsell      0.4.3      2016-02-13
+##  nlme         3.1-131    2017-02-06
+##  parallel     3.4.3      2017-12-07
+##  pillar       1.1.0      2018-01-14
+##  pkgconfig    2.0.1      2017-03-21
+##  plyr         1.8.4      2016-06-08
+##  psych        1.7.3.21   2017-03-22
+##  purrr      * 0.2.4      2017-10-18
+##  R6           2.2.2      2017-06-17
+##  Rcpp         0.12.15    2018-01-20
+##  readr      * 1.1.1      2017-05-16
+##  readxl     * 1.0.0      2017-04-18
+##  reshape2     1.4.3      2017-12-11
+##  rlang        0.2.0      2018-02-20
+##  rmarkdown    1.9        2018-03-01
+##  rprojroot    1.3-2      2018-01-03
+##  rstudioapi   0.7        2017-09-07
+##  rvest        0.3.2      2016-06-17
+##  scales       0.5.0      2017-08-24
+##  stats      * 3.4.3      2017-12-07
+##  stringi      1.1.6      2017-11-17
+##  stringr    * 1.3.0      2018-02-19
+##  tibble     * 1.4.2      2018-01-22
+##  tidyr      * 0.7.2      2017-10-16
+##  tidyverse  * 1.2.1      2017-11-14
+##  tools        3.4.3      2017-12-07
+##  utf8         1.1.3      2018-01-03
+##  utils      * 3.4.3      2017-12-07
+##  withr        2.1.1.9000 2018-03-10
+##  xml2         1.2.0      2018-01-24
+##  yaml         2.1.17     2018-02-27
 ##  source                                              
 ##  cran (@0.2.0)                                       
 ##  CRAN (R 3.4.3)                                      
@@ -807,8 +808,8 @@ write_csv(reportObject, filename)</code></pre>
 ##  local                                               
 ##  cran (@1.3.4)                                       
 ##  local                                               
-##  CRAN (R 3.4.2)                                      
-##  CRAN (R 3.4.3)                                      
+##  cran (@1.13.5)                                      
+##  cran (@0.6.15)                                      
 ##  cran (@0.7.4)                                       
 ##  CRAN (R 3.4.1)                                      
 ##  cran (@0.2.0)                                       
@@ -825,7 +826,7 @@ write_csv(reportObject, filename)</code></pre>
 ##  CRAN (R 3.4.0)                                      
 ##  CRAN (R 3.4.1)                                      
 ##  CRAN (R 3.4.0)                                      
-##  CRAN (R 3.4.1)                                      
+##  cran (@1.20)                                        
 ##  CRAN (R 3.4.3)                                      
 ##  cran (@0.2.1)                                       
 ##  cran (@1.7.1)                                       
@@ -837,32 +838,34 @@ write_csv(reportObject, filename)</code></pre>
 ##  cran (@0.4.3)                                       
 ##  CRAN (R 3.4.3)                                      
 ##  local                                               
+##  CRAN (R 3.4.3)                                      
 ##  cran (@2.0.1)                                       
 ##  cran (@1.8.4)                                       
 ##  cran (@1.7.3.2)                                     
 ##  cran (@0.2.4)                                       
 ##  CRAN (R 3.4.0)                                      
-##  CRAN (R 3.4.3)                                      
+##  cran (@0.12.15)                                     
 ##  cran (@1.1.1)                                       
 ##  cran (@1.0.0)                                       
 ##  cran (@1.4.3)                                       
-##  cran (@0.1.4)                                       
-##  CRAN (R 3.4.2)                                      
-##  CRAN (R 3.4.0)                                      
+##  cran (@0.2.0)                                       
+##  cran (@1.9)                                         
+##  cran (@1.3-2)                                       
 ##  CRAN (R 3.4.1)                                      
 ##  cran (@0.3.2)                                       
 ##  cran (@0.5.0)                                       
 ##  local                                               
 ##  CRAN (R 3.4.2)                                      
-##  CRAN (R 3.4.0)                                      
-##  cran (@1.3.4)                                       
+##  cran (@1.3.0)                                       
+##  CRAN (R 3.4.3)                                      
 ##  cran (@0.7.2)                                       
 ##  cran (@1.2.1)                                       
 ##  local                                               
+##  CRAN (R 3.4.3)                                      
 ##  local                                               
-##  CRAN (R 3.4.2)                                      
-##  cran (@1.1.1)                                       
-##  CRAN (R 3.4.3)</code></pre>
+##  Github (r-lib/withr@5d05571)                        
+##  cran (@1.2.0)                                       
+##  cran (@2.1.17)</code></pre>
 </div>
 
 

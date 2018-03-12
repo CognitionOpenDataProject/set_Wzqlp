@@ -175,7 +175,7 @@ NB - initially unclear what type of t-test was used. Author informed us this was
 The authors sent us the data file containing the raw (i.e., unrounded) data. We will use this now:
 
 ```{r}
-d.unrounded <- read_csv("authorAssistance/ExposureCognition_unrounded.csv")
+d.unrounded <- read_csv("authorAssistance/ExposureCognition_Unrounded.csv")
 d.unrounded <- d.unrounded %>% filter(Experiment == 1) # select experiment 1 only
 
 # summarize mean and sd of preference scores
